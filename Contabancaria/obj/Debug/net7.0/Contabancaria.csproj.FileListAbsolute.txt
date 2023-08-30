@@ -1,0 +1,14 @@
+C:\Users\Computador\Desktop\ContaBancariaBrazil\Contabancaria\bin\Debug\net7.0\Contabancaria.exe
+C:\Users\Computador\Desktop\ContaBancariaBrazil\Contabancaria\bin\Debug\net7.0\Contabancaria.deps.json
+C:\Users\Computador\Desktop\ContaBancariaBrazil\Contabancaria\bin\Debug\net7.0\Contabancaria.runtimeconfig.json
+C:\Users\Computador\Desktop\ContaBancariaBrazil\Contabancaria\bin\Debug\net7.0\Contabancaria.dll
+C:\Users\Computador\Desktop\ContaBancariaBrazil\Contabancaria\bin\Debug\net7.0\Contabancaria.pdb
+C:\Users\Computador\Desktop\ContaBancariaBrazil\Contabancaria\obj\Debug\net7.0\Contabancaria.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Computador\Desktop\ContaBancariaBrazil\Contabancaria\obj\Debug\net7.0\Contabancaria.AssemblyInfoInputs.cache
+C:\Users\Computador\Desktop\ContaBancariaBrazil\Contabancaria\obj\Debug\net7.0\Contabancaria.AssemblyInfo.cs
+C:\Users\Computador\Desktop\ContaBancariaBrazil\Contabancaria\obj\Debug\net7.0\Contabancaria.csproj.CoreCompileInputs.cache
+C:\Users\Computador\Desktop\ContaBancariaBrazil\Contabancaria\obj\Debug\net7.0\Contabancaria.dll
+C:\Users\Computador\Desktop\ContaBancariaBrazil\Contabancaria\obj\Debug\net7.0\refint\Contabancaria.dll
+C:\Users\Computador\Desktop\ContaBancariaBrazil\Contabancaria\obj\Debug\net7.0\Contabancaria.pdb
+C:\Users\Computador\Desktop\ContaBancariaBrazil\Contabancaria\obj\Debug\net7.0\Contabancaria.genruntimeconfig.cache
+C:\Users\Computador\Desktop\ContaBancariaBrazil\Contabancaria\obj\Debug\net7.0\ref\Contabancaria.dll
