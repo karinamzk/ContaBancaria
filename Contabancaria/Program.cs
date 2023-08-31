@@ -50,42 +50,66 @@ namespace Contabancaria
                 switch (opcao)
                 {
                     case 1:
-
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Criar Conta \n\n");
+                        Console.ResetColor();
 
+                        KeyPress();
                         break;
                     case 2:
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Listar todas as Contas - por número\n\n");
+                        Console.ResetColor();
 
+                        KeyPress();
                         break;
                     case 3:
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Consulta dados da Conta - por número\n\n");
+                        Console.ResetColor();
 
+                        KeyPress();
                         break;
                     case 4:
+                        Console.ForegroundColor = ConsoleColor.Green;   
                         Console.WriteLine("Atualizar dados da Conta\n\n");
+                        Console.ResetColor();
 
+                        KeyPress();
                         break;
                     case 5:
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Apagar a Conta\n\n");
+                        Console.ResetColor();
 
+                        KeyPress();
                         break;
                     case 6:
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Saque\n\n");
-
+                        Console.ResetColor();
                         break;
                     case 7:
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Depósito\n\n");
+                        Console.ResetColor();
 
+                        KeyPress();
                         break;
                     case 8:
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Transferência entre Contas\n\n");
+                        Console.ResetColor();
 
+                        KeyPress();
                         break;
                     case 9:
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("\nOpção Inválida!\n");
-                        break;
-                    
+                        Console.ResetColor();
+
+                        KeyPress();
+                        break;    
                 }
             }
 
@@ -97,6 +121,15 @@ namespace Contabancaria
                 Console.WriteLine("github/conteudoGeneration");
                 Console.WriteLine("***************************************************");
          
+            }
+
+            static void KeyPress()
+            {
+                do
+                {
+                    Console.Write("\nPress Enter to continue!");
+                    consoleKeyInfo = Console.ReadKey();
+                } while (consoleKeyInfo.Key != ConsoleKey.Enter);
             }
         }
     }
