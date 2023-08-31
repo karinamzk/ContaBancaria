@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Contabancaria.Model;
+using System.ComponentModel;
 
 namespace Contabancaria
 {
@@ -8,7 +9,23 @@ namespace Contabancaria
 
         static void Main(string[] args)
         {
+
             int opcao;
+
+            Conta c1= new Conta(1, 123, 1, 1000000.00M, "Gaspar");
+
+            c1.Visualizar();
+            c1.SetNumero(345);
+            c1.Visualizar();
+
+            c1.Sacar(1000);
+
+            c1.Visualizar();
+
+            c1.Depositar(5000);
+
+            c1.Visualizar();
+
             while (true)
             {
                 Console.BackgroundColor = ConsoleColor.DarkCyan;
