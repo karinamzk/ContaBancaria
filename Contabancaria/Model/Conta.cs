@@ -9,13 +9,15 @@ namespace Contabancaria.Model
 {
     public class Conta
     {
+        /*Atributo*/
         private int numero;
         private int agencia;
         private int tipo;
         private decimal saldo;
         private string titular = string.Empty;
-        /*Método Construtor*/
 
+
+        /*Método Construtor*/
         public Conta(int numero, int agencia, int tipo, decimal saldo, string titular)
         {
             this.numero = numero;
@@ -24,6 +26,10 @@ namespace Contabancaria.Model
             this.saldo = saldo;
             this.titular = titular;
         }
+
+        /* Polimorfismo de Sobrecarga*/
+        public Conta() { }
+
         /* Métodos Get (exibir) e Set (alterar)*/
         public int GetNumero()
         {
@@ -74,9 +80,9 @@ namespace Contabancaria.Model
         {
             this.saldo = saldo;
         }
-        public bool Sacar(decimal valor)
+        public virtual bool Sacar(decimal valor)
         {
-            if (this.saldo > valor)
+            if (this.saldo < valor)
             {
                 Console.WriteLine("Saldo Insuficiente!");
                 return false;
@@ -90,7 +96,7 @@ namespace Contabancaria.Model
             this.SetSaldo(this.saldo + valor);
         }
 
-        public void Visualizar()
+        public virtual void Visualizar()
         {
             string tipo = "";
 
