@@ -24,7 +24,7 @@ namespace Contabancaria.Model
             this.saldo = saldo;
             this.titular = titular;
         }
-        /* Métodos Construtor*/
+        /* Métodos Get (exibir) e Set (alterar)*/
         public int GetNumero()
         {
             return numero;
@@ -74,7 +74,6 @@ namespace Contabancaria.Model
         {
             this.saldo = saldo;
         }
-
         public bool Sacar(decimal valor)
         {
             if (this.saldo > valor)
@@ -109,7 +108,7 @@ namespace Contabancaria.Model
             Console.WriteLine("********************************");
             Console.WriteLine($"Número da conta : {this.numero}");
             Console.WriteLine($"Número da agência : {this.agencia}");
-            Console.WriteLine($"Tipo da conta : {this.tipo}");
+            Console.WriteLine($"Tipo da conta : {tipo}");
             Console.WriteLine($"Saldo da conta : {this.saldo}");
             Console.WriteLine($"Titular da conta : {this.titular}");
 
