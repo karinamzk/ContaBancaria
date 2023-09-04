@@ -1,5 +1,8 @@
-﻿using Contabancaria.Model;
+﻿using Contabancaria.Controller;
+using Contabancaria.Model;
+using System;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Contabancaria
 {
@@ -10,39 +13,17 @@ namespace Contabancaria
         static void Main(string[] args)
         {
 
-            int opcao;
+            int opcao, agencia, tipo, aniversario;
+            string? titular;
+            decimal saldo, limite;
 
-            /*Conta c1= new Conta(1, 123, 1, 1000000.00M, "Gaspar");
+            ContaController contas = new();
 
-            c1.Visualizar();
-            c1.SetNumero(345);
-            c1.Visualizar();
+            ContaCorrente cc1 = new ContaCorrente(contas.GerarNumero(), 123, 1, 100000000.00M, "Samantha", 1000.00m);
+            contas.Cadastrar(cc1);
 
-            c1.Sacar(1000);
-
-            c1.Visualizar();
-
-            c1.Depositar(5000);
-
-            c1.Visualizar();
-
-            ContaCorrente cc1 = new ContaCorrente(2, 123, 1, 100000000.00M, "Samantha", 1000.00m);
-
-            cc1.Visualizar();
-
-            cc1.Sacar(200000000.00M);
-            cc1.Visualizar();
-
-            cc1.Depositar(5000);
-            cc1.Visualizar();*/
-
-            ContaPoupanca cp1 = new ContaPoupanca(1, 123, 2, 100000000, "Karina", 15);
-
-            cp1.Visualizar();
-            cp1.Sacar(2000);
-            cp1.Visualizar();
-            cp1.Depositar(50);
-            cp1.Visualizar();
+            ContaPoupanca cp1 = new ContaPoupanca(contas.GerarNumero(), 123, 2, 100000000, "Karina", 15);
+            contas.Cadastrar(cp1);
 
             while (true)
             {
@@ -78,7 +59,6 @@ namespace Contabancaria
                     Console.ForegroundColor= ConsoleColor.Green;
                     Console.WriteLine("\n Banco do Brazil com Z - O seu Futuro começa aqui!");
                     Sobre();
-                    Console.ResetColor();
                     System.Environment.Exit(0);
                 }
 
@@ -89,12 +69,47 @@ namespace Contabancaria
                         Console.WriteLine("Criar Conta \n\n");
                         Console.ResetColor();
 
+                        Console.WriteLine("Digite o Número da Agência: ");
+                        agencia = Convert.ToInt32(Console.ReadLine());
+
+                        Console.WriteLine("Digite o nome do Titular: ");
+                        titular = Console.ReadLine();
+
+                        titular ??= string.Empty;
+
+                        do
+                        {
+                            Console.WriteLine("Digite o tipo da Conta: ");
+                            tipo = Convert.ToInt32(Console.ReadLine());
+                        } while (tipo != 1 && tipo != 2);
+
+                        Console.WriteLine("Digite o Saldo da Conta: ");
+                        saldo = Convert.ToDecimal(Console.ReadLine());
+
+                        switch (tipo)
+                        {
+                            case 1:
+                                Console.WriteLine("Digite o limite da Conta: ");
+                                limite = Convert.ToDecimal(Console.ReadLine());
+
+                                contas.Cadastrar(new ContaCorrente(contas.GerarNumero(), agencia, tipo, saldo, titular, limite)); ;
+                                break;
+                            case 2:
+                                Console.WriteLine("Digite o aniversario da Conta: ");
+                                aniversario = Convert.ToInt32(Console.ReadLine());
+
+                                contas.Cadastrar(new ContaPoupanca(contas.GerarNumero(), agencia, tipo, saldo, titular, aniversario));
+                                break;
+                        }
+
                         KeyPress();
                         break;
                     case 2:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Listar todas as Contas - por número\n\n");
                         Console.ResetColor();
+
+                        contas.ListarTodas();
 
                         KeyPress();
                         break;

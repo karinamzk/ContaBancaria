@@ -7,7 +7,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Contabancaria.Model
 {
-    public class Conta
+    public abstract class Conta
     {
         /*Atributo*/
         private int numero;
