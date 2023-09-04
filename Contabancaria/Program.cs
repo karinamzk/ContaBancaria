@@ -36,7 +36,7 @@ namespace Contabancaria
             cc1.Depositar(5000);
             cc1.Visualizar();*/
 
-            ContaPoupanca cp1 = new ContaPoupanca(1, 123, 2, 10000, "Karina", 15);
+            ContaPoupanca cp1 = new ContaPoupanca(1, 123, 2, 100000000, "Karina", 15);
 
             cp1.Visualizar();
             cp1.Sacar(2000);
