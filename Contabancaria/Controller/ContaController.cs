@@ -27,7 +27,6 @@ namespace Contabancaria.Controller
 
                 Console.WriteLine($"A conta número {conta.GetNumero()} foi atualizada com sucesso! ");
 
-
             }
             else
             {
