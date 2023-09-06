@@ -13,21 +13,21 @@ namespace Contabancaria
         static void Main(string[] args)
         {
 
-            int opcao, agencia, tipo, aniversario, numero;
+            int opcao, agencia, tipo, aniversario, numero, numeroDestino;
             string? titular;
-            decimal saldo, limite;
+            decimal saldo, limite, valor;
 
             ContaController contas = new();
 
             ContaCorrente cc1 = new ContaCorrente(contas.GerarNumero(), 123, 1, 100000000.00M, "Samantha", 1000.00m);
             contas.Cadastrar(cc1);
 
-            ContaPoupanca cp1 = new ContaPoupanca(contas.GerarNumero(), 123, 2, 100000000.00M, "Karina", 150000);
+            ContaPoupanca cp1 = new ContaPoupanca(contas.GerarNumero(), 123, 2, 100000000.00M, "Karina", 15);
             contas.Cadastrar(cp1);
 
             while (true)
             {
-                Console.BackgroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = ConsoleColor.Gray;
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("*********************************************");
                 Console.WriteLine("                                             ");
@@ -70,6 +70,7 @@ namespace Contabancaria
                     Console.ForegroundColor= ConsoleColor.Green;
                     Console.WriteLine("\n Banco do Brazil com Z - O seu Futuro começa aqui!");
                     Sobre();
+                    Console.ResetColor ();
                     System.Environment.Exit(0);
                 }
 
@@ -144,13 +145,13 @@ namespace Contabancaria
                         Console.WriteLine("Digite o número da Conta: ");
                         numero = Convert.ToInt32(Console.ReadLine());
 
+                        var conta = contas.BuscarNaCollection(numero);
+
                         if (contas is not null)
                         {
 
                             Console.WriteLine("Digite o Número da Agência: ");
                             agencia = Convert.ToInt32(Console.ReadLine());
-
-                            var conta = contas.BuscarNaCollection(numero);
 
                             Console.WriteLine("Digite o nome do Titular: ");
                             titular = Console.ReadLine();
@@ -168,7 +169,9 @@ namespace Contabancaria
                                     Console.WriteLine("Digite o limite da Conta: ");
                                     limite = Convert.ToDecimal(Console.ReadLine());
 
-                                    contas.Atualizar(new ContaCorrente(numero, agencia, tipo, saldo, titular, limite)); ;
+                                    ContaCorrente cc2 = new ContaCorrente(numero, agencia, tipo, saldo, titular, limite);
+
+                                    contas.Atualizar(cc2);
                                     break;
                                 case 2:
                                     Console.WriteLine("Digite o aniversario da Conta: ");
@@ -182,10 +185,8 @@ namespace Contabancaria
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine($"A Conta {numero} não foi encontrada!");
-
                             Console.ResetColor();
                         }
-
 
                         KeyPress();
                         break;
@@ -205,11 +206,29 @@ namespace Contabancaria
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Saque\n\n");
                         Console.ResetColor();
+
+                        Console.WriteLine("Digite o número da Conta: ");
+                        numero = Convert.ToInt32(Console.ReadLine());
+
+                        Console.WriteLine("Digite o Valor da saque: ");
+                        valor = Convert.ToDecimal(Console.ReadLine());
+
+                        contas.Sacar(numero, valor);
+
+                        KeyPress();
                         break;
                     case 7:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Depósito\n\n");
                         Console.ResetColor();
+
+                        Console.WriteLine("Digite o número da Conta: ");
+                        numero = Convert.ToInt32(Console.ReadLine());
+
+                        Console.WriteLine("Digite o valor do Déposito: ");
+                        valor = Convert.ToDecimal(Console.ReadLine());
+
+                        contas.Depositar(numero, valor);
 
                         KeyPress();
                         break;
@@ -217,6 +236,17 @@ namespace Contabancaria
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Transferência entre Contas\n\n");
                         Console.ResetColor();
+
+                        Console.WriteLine("Digite o número da conta de Origem: ");
+                        numero = Convert.ToInt32(Console.ReadLine());
+
+                        Console.WriteLine("Digite o número da conta de Destino: ");
+                        numeroDestino = Convert.ToInt32(Console.ReadLine());
+
+                        Console.WriteLine("Digite o valor da transferência: ");
+                        valor = Convert.ToDecimal(Console.ReadLine());
+
+                        contas.Transferir(numero, numeroDestino, valor);
 
                         KeyPress();
                         break;
@@ -233,9 +263,9 @@ namespace Contabancaria
             static void Sobre()
             {
                 Console.WriteLine("\n*************************************************");
-                Console.WriteLine("Projeto Desenvolvido por: ");
-                Console.WriteLine("Generation Brasil - generation@generation.org");
-                Console.WriteLine("github/conteudoGeneration");
+                Console.WriteLine("Projeto Desenvolvido por: Karina Akina ");
+                Console.WriteLine("Karina Akina - Karinamzk2@gmail.com");
+                Console.WriteLine("https://github.com/karinamzk");
                 Console.WriteLine("***************************************************");
          
             }

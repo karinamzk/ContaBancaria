@@ -32,16 +32,14 @@ namespace Contabancaria.Controller
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"A Conta {numero} não foi encontrada!");
-
                 Console.ResetColor();
             }
-            
         }
 
         public void Cadastrar(Conta conta)
         {
             ListaContas.Add(conta);
-            Console.WriteLine($"A Conta {conta.GetNumero()} foi criada com sucesso!");
+            Console.WriteLine($"A Conta número {conta.GetNumero()} foi criada com sucesso!");
         }
 
         public void Deletar(int numero)
@@ -51,12 +49,12 @@ namespace Contabancaria.Controller
             if (conta is not null)
             {
                 if (ListaContas.Remove(conta) == true)
-                    Console.WriteLine($"A Conta {numero} foi apagada com sucesso");
+                    Console.WriteLine($"A Conta número {numero} foi apagada com sucesso");
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"A Conta {numero} não foi encontrada!");
+                Console.WriteLine($"A Conta número {numero} não foi encontrada!");
 
                 Console.ResetColor();
             }
@@ -80,26 +78,65 @@ namespace Contabancaria.Controller
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"A Conta {numero} não foi encontrada!");
-
                 Console.ResetColor();
             }
         }
 
-        //Métodos Bancarios 
+        //Métodos Bancários 
 
         public void Sacar(int numero, decimal valor)
         {
-            throw new NotImplementedException();
+            var conta = BuscarNaCollection(numero);
+
+            if (conta is not null)
+            {
+                if (conta.Sacar(valor) == true)
+                    Console.WriteLine($"O Saque da conta numero {numero} foi efetuada com sucesso!");
+            }
+            else
+            {
+                Console.ForegroundColor= ConsoleColor.Red;
+                Console.WriteLine($"A conta numero {numero} não foi encontrada!");
+                Console.ResetColor();
+            }
         }
 
         public void Transferir(int numeroOrigem, int numeroDestino, decimal valor)
         {
-            throw new NotImplementedException();
+            var contaOrigem = BuscarNaCollection(numeroOrigem);
+            var contaDestino = BuscarNaCollection(numeroDestino);
+
+            if (contaOrigem is not null && contaDestino is not null)
+            {
+                if (contaOrigem.Sacar(valor) == true)
+                {
+                    contaDestino.Depositar(valor);
+                    Console.WriteLine($"A Tranferencia foi efetuada com sucesso!");
+                }
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"A Conta de Origem e/ou Conta de Destino não foram encontradas!");
+                Console.ResetColor();
+            }
         }
 
         public void Depositar(int numero, decimal valor)
         {
-            throw new NotImplementedException();
+            var conta = BuscarNaCollection(numero);
+
+            if (conta is not null)
+            {
+                conta.Depositar(valor);
+                    Console.WriteLine($"O Depósito da conta numero {numero} foi efetuada com sucesso!");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"A conta numero {numero} não foi encontrada!");
+                Console.ResetColor();
+            }
         }
          // Metodos Auxiliares
 
@@ -117,14 +154,8 @@ namespace Contabancaria.Controller
                 if (conta.GetNumero() == numero) 
                     return conta;
             }
-
             return null;
         }
 
-
-        public void ListarTodasa()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

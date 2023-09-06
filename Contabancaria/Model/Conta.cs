@@ -27,10 +27,10 @@ namespace Contabancaria.Model
             this.titular = titular;
         }
 
-        /* Polimorfismo de Sobrecarga*/
+        // Polimorfismo de Sobrecarga
         public Conta() { }
 
-        /* Métodos Get (exibir) e Set (alterar)*/
+        // Métodos Get (exibir) e Set (alterar)
         public int GetNumero()
         {
             return numero;

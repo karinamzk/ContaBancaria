@@ -10,14 +10,14 @@ namespace Contabancaria.Repository
     public interface IContaRepository
     {
 
-        // Metodos do CRUD
+        // Métodos do CRUD
         public void ProcurarPorNumero(int numero);
-        public void ListarTodasa();
+        public void ListarTodas();
         public void Cadastrar(Conta conta);
         public void Atualizar(Conta conta);
         public void Deletar(int numero);
 
-        //Metodos Bancarios 
+        //Métodos Bancários 
 
         public void Sacar(int numero, decimal valor);
         public void Depositar(int numero, decimal valor);
