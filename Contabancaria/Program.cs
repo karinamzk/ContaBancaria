@@ -38,12 +38,13 @@ namespace Contabancaria
                 Console.WriteLine("         1 - Criar Conta                     ");
                 Console.WriteLine("         2 - Lista todas as Contas           ");
                 Console.WriteLine("         3 - Buscar Conta por Numero         ");
-                Console.WriteLine("         4 - Atualizar Dados da conta         ");
+                Console.WriteLine("         4 - Atualizar Dados da conta        ");
                 Console.WriteLine("         5 - Apagar Conta                    ");
                 Console.WriteLine("         6 - Sacar                           ");
                 Console.WriteLine("         7 - Depositar                       ");
                 Console.WriteLine("         8 - Transferir valores entre Contas ");
-                Console.WriteLine("         9 - Sair                            ");
+                Console.WriteLine("         9 - Consulta por titular            ");
+                Console.WriteLine("         10 - Sair                           ");
                 Console.WriteLine("                                             ");
                 Console.WriteLine("*********************************************");
                 Console.WriteLine("                                             ");
@@ -64,7 +65,7 @@ namespace Contabancaria
                     Console.ResetColor();
                 }
 
-                if (opcao == 9)
+                if (opcao == 10)
                 {   
                     Console.BackgroundColor= ConsoleColor.Black;
                     Console.ForegroundColor= ConsoleColor.Green;
@@ -252,11 +253,27 @@ namespace Contabancaria
                         break;
                     case 9:
                         Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("Consulta por Titular \n\n");
+
+                        Console.WriteLine("Digite o nome do Titular");
+                        titular = Console.ReadLine();
+
+                        titular ??=string.Empty;
+
+                        contas.ListarTodasPorTitular(titular);
+
+                        Console.ResetColor();
+
+                        KeyPress();
+                        break;
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("\nOpção Inválida!\n");
                         Console.ResetColor();
 
                         KeyPress();
-                        break;    
+                        break;
+                    
                 }
             }
 
